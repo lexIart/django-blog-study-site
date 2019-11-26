@@ -1,0 +1,34 @@
+<!--Оставляем только частности, уникальные содержим[ые] каких-либо страниц блога-->
+
+<!--Для того чтобы видеть базовые шаблоны, расширяем шаблон-->
+{% extends 'blog/blog_foundation.html'%}
+
+<!--Теперь дублируем блоки "частностей" из шаблона blog_foundation.html-->
+{% block title %}
+Blog Source
+{% endblock %}
+
+<!--Переносим сюда, к примеру, обработку списка в цикле и т.п.-->
+{% block content %}
+    <!--Заголовок обработки-->
+    <h1 class="mb-4">Post's: </h1>
+    {% for post in posts %}
+        <!-- mb-4 - сделаем отступ между постами-->
+        <div class="card mb-4">
+            <div class="card-header">
+                <!--Определим здесь дату публикации каждого поста-->
+                {{ post.publication_date }}
+            </div>
+            <div class="card-body">
+                <!--Определим заголовок ПОСТА (не обработки постов)-->
+                <h5 class="card-title">{{ post.title }}</h5>
+                <!--Определим заполнение (текст) поста.-->
+                <!--truncatewords:len - фильтр, обрезающий текст до len длинны-->
+                <p class="card-text">{{ post.body|truncatewords:15 }}</p>
+                <!--С помощью get_absolute_url упрощаем себе задачу в явном определении ссылок в шаблонах html-->
+                <a href="{{ post.get_absolute_url }}" class="btn btn-secondary">Read</a>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
+

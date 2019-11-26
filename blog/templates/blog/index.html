@@ -1,0 +1,19 @@
+<!--Оставляем только частности, уникальные содержим[ые] каких-либо страниц блога-->
+
+<!--Для того чтобы видеть базовые шаблоны, расширяем шаблон-->
+{% extends 'blog/blog_foundation.html'%}
+
+<!--Теперь дублируем блоки "частностей" из шаблона blog_foundation.html-->
+{% block title %}
+Blog Source
+{% endblock %}
+
+<!--Переносим сюда, к примеру, обработку списка в цикле и т.п.-->
+{% block content %}
+    <!--Заголовок обработки-->
+    <h1 class="mb-4">Post's: </h1>
+    {% for post in posts %}
+        {% include 'blog/includes/post_card_template.html' %}
+    {% endfor %}
+{% endblock %}
+
