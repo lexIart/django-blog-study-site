@@ -1,4 +1,6 @@
 <!--Данный шаблон будет являться базовым для ВСЕГО блога-->
+<!--Loading static files of our project.-->
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <title>
         {% block title %}
             Blog Source
@@ -49,6 +52,10 @@
             {% endblock %}
         </div>
     </div>
+</div>
+<div class="admin-panel align-items center">
+    <a href="/admin" class="btn btn-outline-info">Admin</a>
+    {% block admin-panel %} {% endblock %}
 </div>
 </body>
 </html>

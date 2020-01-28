@@ -10,7 +10,7 @@
     <h1 class="mb-5">Post with "{{ tag.title|title }}" tag:</h1>
 
     <!--Список используемых постов берем из тега (manytomany?)-->
-    {% for post in tag.posts.all %}
+    {% for post in tag.posts.all reversed %}
         <!--С помощью функции include обращаемся в шаблону "карточек"-->
         {% include 'blog/includes/post_card_template.html' %}
     {% endfor %}

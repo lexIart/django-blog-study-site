@@ -15,16 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.urls import include  # Модуль позволяющий указывать django о более детальн. маршрутизации в другом прилож.
+from django.urls import include  # Allow us to detail information about routing.
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('blog/', include('blog.urls')),  # Запросы по адресу blog/ будут более дет. обрабат. в файле urls.py прил. blog
+    path('blog/', include('blog.urls')),  # blog/ inquires will be treated in urls.py blog app.
 ]
 
-'''Функция path может принимать четыре аргумента:
-- Шаблон URL (URL-pattern)
-- Функция обрабатывающая запрос по URL шаблону
-- (необ.) Имя этого паттерна
-- (необ.) Доп параметры'''
+'''Function pass can take four arguments:
+- URL-pattern
+- function processing request by url template
+- pattern name
+- extra options'''
